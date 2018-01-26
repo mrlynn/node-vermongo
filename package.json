@@ -1,0 +1,26 @@
+{
+  "name": "hrdata",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "faker": "^4.1.0",
+    "hbs": "~4.0.1",
+    "mongodb": "^3.0.1",
+    "mongoose": "^4.13.9",
+    "mongoose-vermongo": "0.0.4",
+    "morgan": "~1.8.1",
+    "nodemon": "^1.14.11",
+    "pidof": "^1.0.2",
+    "serve-favicon": "~2.4.2",
+    "sudo": "^1.0.3"
+  }
+}

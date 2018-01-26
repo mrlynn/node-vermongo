@@ -1,0 +1,124 @@
+<h1>MongoDB - HR Data</h1>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link" href="#load" role="tab" data-toggle="tab">Load Data</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#create" role="tab" data-toggle="tab">Create Data</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#update" role="tab" data-toggle="tab">Update</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#find" role="tab" data-toggle="tab">Find Record</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#delete" role="tab" data-toggle="tab">Delete</a>
+    </li>
+</ul>
+<div class="tab-content clearfix">
+    
+    <div role="tab-panel" class="tab-pane active" id="load">
+        <h3>Get Data</h3>
+        <a class="btn btn-primary" href="/get-data">LOAD DATA</a>
+        <div class="panel">
+            {{# each people }}
+
+            <form action="/update-id/{{this._id}}" method="POST">
+            <article class="item">
+                <div class="form-control"><label for="id">ID:</label><a href='/get-id/{{this._id}}'>{{this._id}}</a></div>
+                <div class="form-control"><label for="name">Name:</label><input id="name" class="form-control" name="name"  value="{{ this.name }}"></div>
+                <div class="form-control"><label for="email">Email:</label><input id="email" class="form-control" name="email"  value="{{ this.email }}"></div>
+                <div class="form-control"><label for="name">Username:</label><input id="username" class="form-control" name="username"  value="{{ this.username }}"></div>
+                <div>{{# each this.versions }}
+                Version: {{this._version}}
+                {{/each}}
+                </div>
+                <button class="btn btn-primary">Update</button>
+            </article>
+            </form>
+            {{/each}}
+        </div>
+    </div>
+    <div role="tab-panel" class="tab-pane" id="create">
+        <h3>Create Data</h3>
+        <a class="btn btn-primary" href="/get-data">LOAD DATA</a>
+        <div class="panel">
+            <form action="/create" method="POST">
+            <article class="item">
+                <div class="form-control"><label for="name">Name:</label><input id="name" class="form-control" name="name"  value=""></div>
+                <div class="form-control"><label for="email">Email:</label><input id="email" class="form-control" name="email"  value=""></div>
+                <div class="form-control"><label for="name">Username:</label><input id="username" class="form-control" name="username"  value=""></div>
+                <div class="form-control"><label for="name">Telephone:</label><input id="phone" class="form-control" name="phone"  value=""></div>
+                <button class="btn btn-primary">Create</button>
+            </article>
+            </form>
+        </div>
+    </div>
+    <div role="tab-panel" class="tab-pane" id="update">
+        <section class="update">
+            <h3>Update Data</h3>
+            <div class="form-group">
+                <form action="/update" method="post">
+                    <div class="form-group input">
+                        <label for="id">ID</label>
+                        <input class="form-control" type="text" id="id" name="id">
+                    </div>
+                    <div class="form-group input">
+                        <label for="Name">Name</label>
+                        <input class="form-control" type="text" id="name" name="name">
+                    </div>
+                    <div class="form-group input">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="text" id="email" name="email">
+                    </div>
+                    <div class="form-group input">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" id="username" name="username">
+                    </div>
+                    <button class="btn btn-primary" type="submit">UPDATE</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <div role="tab-panel" class="tab-pane" id="find">
+        <section class="findbyid">
+            <h3>Find By ID</h3>
+            <div class="form-group">
+                <form action="/find" method="post">
+                    <div class="form-group input">
+                        <label for="id">ID</label>
+                        <input class="form-control" type="text" id="id" name="id">
+                    </div>
+                    {{#if foundPerson.name }}
+                    <div class="form-group input">
+                        <label for="Name">Name</label>
+                        <input class="form-control" type="text" id="name" name="name" value="{{foundPerson.name}}">
+                    </div>
+                    <div class="form-group input">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="text" id="email" name="email" value="{{foundPerson.email}}">
+                    </div>
+                    <div class="form-group input">
+                        <label for="username">Username</label>
+                        <input class="form-control" type="text" id="username" name="username" value="{{foundPerson.username}}">
+                    </div>
+                    {{/if}}
+                    <button class="btn btn-primary" type="submit">UPDATE</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <div role="tab-panel" class="tab-pane" id="delete">
+        <section class="delete">
+            <h3>Delete Data</h3>
+            <form action="/delete" method="post">
+                <div class="form-group input">
+                    <label for="id">ID</label>
+                    <input class="form-control" type="text" id="id" name="id">
+                </div>
+                <button class="btn btn-warning" type="submit">DELETE</button>
+            </form>
+        </section>
+    </div>
+</div>
